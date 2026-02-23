@@ -10,9 +10,9 @@ const contactInfo = [
   {
     icon: <Phone size={18} strokeWidth={1.8} />,
     label: 'WhatsApp',
-    value: '+255 XXX XXX XXX',
-    sub: 'Mon – Sat · 8am – 8pm EAT',
-    href: 'https://wa.me/255xxxxxxxxx',
+    value: '+255 688 735 820',
+    sub: 'Mon – fri · 8am – 5pm EAT',
+    href: 'https://wa.me/255688735820',
   },
   {
     icon: <Mail size={18} strokeWidth={1.8} />,
