@@ -1,7 +1,6 @@
 import { useInView } from 'react-intersection-observer'
-// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
-import { TheoviqMark } from './TheoviqLogo' // Adjusted to assume named export based on Hero.jsx
+import { TheoviqMark } from './TheoviqLogo'
 import './About.css'
 
 const reasons = [

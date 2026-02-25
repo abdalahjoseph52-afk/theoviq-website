@@ -1,0 +1,191 @@
+/* ══════════════════════════════
+   WHATSAPP FLOATING BUTTON
+   Fixed to viewport — always visible
+══════════════════════════════ */
+
+.wa-float {
+  position: fixed !important;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.wa-float > * {
+  pointer-events: all;
+}
+
+/* ── Main green button ── */
+.wa-float__btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #25D366;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+}
+
+.wa-float__notif-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 13px;
+  height: 13px;
+  background: #B5CE00;
+  border: 2.5px solid white;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.35); opacity: 0.7; }
+}
+
+/* ── Popup card ── */
+.wa-float__popup {
+  width: 300px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transform-origin: bottom right;
+}
+
+/* Header */
+.wa-float__popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: #075E54;
+}
+
+.wa-float__popup-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wa-float__popup-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.wa-float__popup-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.wa-float__online {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  flex-shrink: 0;
+}
+
+.wa-float__popup-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.wa-float__popup-close:hover { color: white; }
+
+/* Chat bubble */
+.wa-float__popup-bubble {
+  margin: 16px 16px 10px;
+  background: #f0f0f0;
+  padding: 12px 14px;
+  border-radius: 12px 12px 12px 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #222;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Quick replies */
+.wa-float__quick {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0 14px;
+}
+
+.wa-float__quick-btn {
+  background: white;
+  border: 1.5px solid #25D366;
+  color: #075E54;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+}
+
+.wa-float__quick-btn:hover {
+  background: #25D366;
+  color: white;
+}
+
+/* Start conversation button */
+.wa-float__open-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 28px);
+  margin: 14px;
+  padding: 14px;
+  background: #25D366;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.wa-float__open-btn:hover { background: #1ebe5d; }
+
+/* ═══ Mobile ═══ */
+@media (max-width: 480px) {
+  .wa-float  { bottom: 16px; right: 14px; }
+  .wa-float__popup { width: calc(100vw - 28px); }
+}

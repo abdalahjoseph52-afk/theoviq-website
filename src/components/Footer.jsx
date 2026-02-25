@@ -16,9 +16,8 @@ const footerLinks = {
     { label: 'Contact',       href: '#contact' },
   ],
   Connect: [
-    { label: 'Instagram', href: '#' },
-    { label: 'WhatsApp',  href: 'https://wa.me/255xxxxxxxxx' },
-    { label: 'LinkedIn',  href: '#' },
+    { label: 'Instagram', href: 'https://www.instagram.com/theoviq_26?igsh=NzgxYmZzbmtic3Q5' },
+    { label: 'WhatsApp',  href: 'https://wa.me/255688735820' },
     { label: 'Email',     href: 'mailto:hello@theoviq.com' },
   ],
 }
@@ -86,7 +85,7 @@ export default function Footer() {
         <div className="footer__bottom">
           <div className="footer__bottom-left">
             <span className="dot-lime" />
-            <span>© 2025 Theoviq · Founded by Abdalah Wambura</span>
+            <span>© 2025 Theoviq · Digital Growth Partner</span>
           </div>
           <div className="footer__bottom-right">
             <span>Dar es Salaam, Tanzania</span>

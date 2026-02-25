@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Phone, Mail, MapPin, Send } from 'lucide-react'
-import { TheoviqMark } from './TheoviqLogo' // Adjusted to assume named export based on Hero.jsx
+import { ArrowUpRight, Phone, Mail, MapPin, Send, Instagram } from 'lucide-react'
+import { TheoviqMark } from './TheoviqLogo'
 import './Contact.css'
+
+const WHATSAPP_NUMBER = '255688735820'
 
 const contactInfo = [
   {
     icon: <Phone size={18} strokeWidth={1.8} />,
     label: 'WhatsApp',
     value: '+255 688 735 820',
-    sub: 'Mon – fri · 8am – 5pm EAT',
-    href: 'https://wa.me/255688735820',
+    sub: 'Mon – Sat · 8am – 8pm EAT',
+    href: `https://wa.me/${WHATSAPP_NUMBER}`,
   },
   {
     icon: <Mail size={18} strokeWidth={1.8} />,
@@ -20,6 +21,13 @@ const contactInfo = [
     value: 'hello@theoviq.com',
     sub: 'Reply within 4 hours',
     href: 'mailto:hello@theoviq.com',
+  },
+  {
+    icon: <Instagram size={18} strokeWidth={1.8} />,
+    label: 'Instagram',
+    value: '@theoviq_26',
+    sub: 'Follow for tips & updates',
+    href: 'https://www.instagram.com/theoviq_26?igsh=NzgxYmZzbmtic3Q5',
   },
   {
     icon: <MapPin size={18} strokeWidth={1.8} />,
@@ -39,6 +47,15 @@ const services = [
   'Other / Not Sure',
 ]
 
+const servicePrices = {
+  'Web Development':  'From Tsh 500,000',
+  'Landing Page':     'From Tsh 150,000',
+  'Brand Identity':   'From Tsh 600,000',
+  'Growth Bundle':    'From Tsh 1,500,000',
+  'Monthly Support':  'From Tsh 150,000/mo',
+  'Other / Not Sure': 'Let\'s talk',
+}
+
 export default function Contact() {
   const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true })
 
@@ -53,8 +70,25 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // In production: connect to Formspree / EmailJS / backend API
-    console.log('Form submitted:', form)
+
+    // Build WhatsApp message with all form details
+    const price = form.service ? servicePrices[form.service] : ''
+    const msg = [
+      `👋 *New Inquiry — Theoviq Website*`,
+      ``,
+      `*Name:* ${form.name}`,
+      `*Business:* ${form.business || 'Not provided'}`,
+      `*Email:* ${form.email || 'Not provided'}`,
+      `*Phone:* ${form.phone || 'Not provided'}`,
+      `*Service Needed:* ${form.service || 'Not specified'}`,
+      price ? `*Budget Range:* ${price}` : '',
+      ``,
+      `*Message:*`,
+      form.message || '(no message)',
+    ].filter(Boolean).join('\n')
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
+    window.open(waUrl, '_blank')
     setSubmitted(true)
   }
 
@@ -155,12 +189,22 @@ export default function Contact() {
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
-                <div className="contact__success-title">Message Received!</div>
+                <div className="contact__success-title">Opening WhatsApp…</div>
                 <p className="contact__success-sub">
-                  Thank you, <strong>{form.name}</strong>. We'll reach out within 4 hours to schedule your free strategy call.
+                  Your message is ready to send to Theoviq on WhatsApp. Just hit <strong>Send</strong> in the app and we'll reply within 4 hours.
                 </p>
-                <div className="contact__success-sub" style={{ marginTop: 8, opacity: 0.6, fontSize: 13 }}>
-                  Check your WhatsApp or email for our reply.
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
+                >
+                  Open WhatsApp Directly
+                  <ArrowUpRight size={16} strokeWidth={2.5} />
+                </a>
+                <div className="contact__success-sub" style={{ marginTop: 12, opacity: 0.5, fontSize: 12 }}>
+                  Or email us at hello@theoviq.com
                 </div>
               </div>
             ) : (

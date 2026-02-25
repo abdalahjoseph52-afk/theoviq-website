@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import './Portfolio.css'
